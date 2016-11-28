@@ -1,0 +1,8 @@
+/.idea
+.idea
+node_modules
+bower_components
+/front/dist/**
+/server/dist/onigiri.json
+/database
+/**/coverage
