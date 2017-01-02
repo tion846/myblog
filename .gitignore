@@ -2,6 +2,7 @@
 .idea
 node_modules
 bower_components
+http-server
 /front/dist/**
 /server/dist/onigiri.json
 /database

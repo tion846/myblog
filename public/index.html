@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:https="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Mirco Blog</title>
+
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <style>
+        #infobar {
+            /*background-color: #cccccc;*/
+            /*background-image: url('https://www.fbcover.jp/cover/cvr_04210.jpg');*/
+            background-image: url('./img/cvr_04210.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0px 40px 0px 40px;
+            height: 200px;
+        }
+
+        button {
+            width: 180px;
+            height: 28px;
+            line-height: 0px !important;
+        }
+
+        input {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: block;
+            width: 180px;
+        }
+
+        p {
+            color: #ffffff;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">登入</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div id="infobar">
+
+    <div style="width: 180px; height: 200px; float: left; position: relative; left: 15% ">
+        <input id="name" class="input-sm" type="text" placeholder="帳號">
+        <input id="password" class="input-sm" type="text" placeholder="密碼">
+        <button id="btnLogin" class="btn btn-primary">登入</button>
+        <p>or</p>
+        <button id="btnSign" class="btn btn-success">註冊</button>
+        <!--<input class="form-control" type="text" id="name" placeholder="name">-->
+        <!--<input class="form-control" type="password" id="password" placeholder="password">-->
+        <!--<input class="form-control" type="password" id="Repassword" placeholder="password agian">-->
+        <!--<button class="btn btn-primary btn-block" id="btnSign">註冊</button>-->
+    </div>
+</div>
+
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>
