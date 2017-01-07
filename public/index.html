@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:https="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>My Mirco Blog</title>
@@ -7,74 +7,105 @@
 
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="./css/inedx.css">
 
-    <style>
-        #infobar {
-            /*background-color: #cccccc;*/
-            /*background-image: url('https://www.fbcover.jp/cover/cvr_04210.jpg');*/
-            background-image: url('./img/cvr_04210.jpg');
-            background-repeat: no-repeat;
-            background-position: center;
-            margin: 0px 40px 0px 40px;
-            height: 200px;
-        }
-
-        button {
-            width: 180px;
-            height: 28px;
-            line-height: 0px !important;
-        }
-
-        input {
-            margin-top: 15px;
-            margin-bottom: 15px;
-            display: block;
-            width: 180px;
-        }
-
-        p {
-            color: #ffffff;
-            text-align: center;
-            margin: 0px;
-        }
-    </style>
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Blog</a>
+
+<div id="myapp">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li v-if="!islogin"><a href="#" onclick="showlogin()">登入</a></li>
+                    <li v-else><a href="#" onclick="logout()">登出</a></li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div id="infobar" v-if="!islogin">
+
+        <div id="logDiv" style="width: 180px; height: 200px; float: left; position: relative; left: 15% ">
+            <input id="logName" class="input-sm" type="text" placeholder="帳號">
+            <input id="logPwd" class="input-sm" type="password" placeholder="密碼">
+            <button id="btnLogin" class="btn btn-primary">登入</button>
+            <p style="color: #ffffff; margin: 0px; text-align: center;">or</p>
+            <button id="btnToggleSign" class="btn btn-success">註冊</button>
+            <!--<input class="form-control" type="text" id="name" placeholder="name">-->
+            <!--<input class="form-control" type="password" id="password" placeholder="password">-->
+            <!--<input class="form-control" type="password" id="Repassword" placeholder="password agian">-->
+            <!--<button class="btn btn-primary btn-block" id="btnSign">註冊</button>-->
+        </div>
+        <div class="hide" id="signDiv"
+             style="width: 180px; height: 200px; float: left; position: relative; left: 15%; opacity: 0">
+            <input id="signName" class="input-sm" type="text" placeholder="使用者帳號">
+            <input id="signPwd" class="input-sm" type="password" placeholder="輸入密碼">
+            <input id="signRePwd" class="input-sm" type="password" placeholder="再次輸入密碼">
+            <button id="btnSign" class="btn btn-success">確定註冊</button>
+        </div>
+    </div>
+
+
+    <div id="content" v-if="islogin">
+
+        <div id="postMsg">
+            <input id="inputMsg" class="input-lg" type="text">
+            <button id="btnPost" class="btn btn-success">發表</button>
+            <span></span>
+            <input id="ispublic" type="checkbox" checked>
+            <label for="ispublic">公開</label>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div id="showMsg">
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登入</a></li>
-
+            <ul class="list-group">
+                <li class="list-group-item" v-for="msg in items">
+                    <!--<img src="" alt="">-->
+                    <h4>{{msg.name}} </h4><span style="float: right; font-size: 10px; color: gray;">{{msg.time}}</span>
+                    <p>{{msg.msg}} </p>
+                </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+        </div>
+    </div>
+    <div id="showPublicMsg" v-show="!islogin">
+        <ul class="list-group">
+            <li class="list-group-item" v-for="msg in items" v-show="msg.ispublic">
+                <h4>{{msg.name}} </h4><span style="float: right; font-size: 10px; color: gray;">{{msg.time}}</span>
+                <p>{{msg.msg}} </p>
+            </li>
+        </ul>
+    </div>
 
-<div id="infobar">
-
-    <div style="width: 180px; height: 200px; float: left; position: relative; left: 15% ">
-        <input id="name" class="input-sm" type="text" placeholder="帳號">
-        <input id="password" class="input-sm" type="text" placeholder="密碼">
-        <button id="btnLogin" class="btn btn-primary">登入</button>
-        <p>or</p>
-        <button id="btnSign" class="btn btn-success">註冊</button>
-        <!--<input class="form-control" type="text" id="name" placeholder="name">-->
-        <!--<input class="form-control" type="password" id="password" placeholder="password">-->
-        <!--<input class="form-control" type="password" id="Repassword" placeholder="password agian">-->
-        <!--<button class="btn btn-primary btn-block" id="btnSign">註冊</button>-->
+    <div id="showFunction">
+        <ul>
+            <li><img src="./img/Idea-64.png" alt="">
+                <p>發現新點子</p></li>
+            <li><img src="./img/Note-52.png" alt="">
+                <p>記錄你的想法</p></li>
+            <li><img src="./img/Mind Map-50.png" alt="">
+                <p>分享創造更多可能</p></li>
+        </ul>
     </div>
 </div>
+<footer>
+    <hr>
+    <div style="text-align: end">
+        <p>nai <span class="glyphicon glyphicon-copyright-mark"></span> 2017</p>
+    </div>
 
+</footer>
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/vue/dist/vue.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="./js/index.js"></script>
 </body>

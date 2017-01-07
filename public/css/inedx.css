@@ -1,0 +1,131 @@
+
+#infobar {
+    /*background-color: #cccccc;*/
+    /*background-image: url('https://www.fbcover.jp/cover/cvr_04210.jpg');*/
+    background-image: url('../img/cvr_04210.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /*margin: 0px 40px 0px 40px;*/
+    height: 200px;
+}
+
+.fadeout {
+    animation: fade;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+#infobar button {
+    width: 180px;
+    height: 28px;
+    line-height: 0px !important;
+}
+
+#infobar input {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: block;
+    width: 180px;
+}
+
+#showFunction ul {
+    background-color: #fcf8e3;
+    padding-bottom: 50px;
+}
+
+#showFunction ul li {
+    /*float: left;*/
+    display: inline-block;
+    list-style-type: none;
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin: 50px 0 0 150px;
+}
+
+li img {
+    width: 50px;
+    height: 50px;
+}
+
+#postMsg {
+    text-align: center;
+    /*background-color: azure;*/
+}
+
+#ispublic {
+    width: 15px !important;
+    height: 15px !important;
+    margin-top: 5px;
+}
+
+#postMsg input {
+    display: inline;
+    width: 550px;
+    height: 30px;
+    line-height: 0px;
+}
+
+#showMsg h4 {
+    display: inline-block;
+    color: green;
+    width: 50px;
+    margin: 0 !important;
+}
+
+#showMsg p {
+    /*display: inline-block;*/
+    display: block;
+    text-align: justify;
+    max-width: 850px;
+    margin: 10px;
+    /*background-color: peachpuff;*/
+}
+
+#showMsg li {
+    text-align: left;
+}
+
+#showMsg ul {
+
+    padding: 50px;
+}
+
+#showPublicMsg h4 {
+    display: inline-block;
+    color: green;
+    width: 50px;
+    margin: 0 !important;
+}
+
+#showPublicMsg p {
+    /*display: inline-block;*/
+    display: block;
+    text-align: justify;
+    max-width: 850px;
+    margin: 10px;
+    /*background-color: peachpuff;*/
+}
+
+#showPublicMsg li {
+    text-align: left;
+}
+
+#showPublicMsg ul {
+
+    padding: 50px;
+}
+
+li {
+    list-style-type: none;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}
